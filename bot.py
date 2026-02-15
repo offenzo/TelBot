@@ -3,7 +3,7 @@ import asyncio
 import os
 from telegram import Bot
 
-TOKEN = os.getenv('TELEGARAMTOKEN')
+TOKEN = os.getenv('TELEGRAMTOKEN')
 CANAL_ID = os.getenv('CHATID') 
 ficheiroMemoria = 'vagas_enviadas.txt'
 
