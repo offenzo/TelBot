@@ -42,7 +42,7 @@ async def main():
         titulo = vaga['title']
         tags = ", ".join([label['name'] for label in vaga['labels']])
         
-        if link not in enviadas and 'Sênior' not in titulo:
+        if link not in enviadas and 'Junior' or 'Estagio' not in titulo:
             mensagem = (
                 f'*Nova Vaga no GitHub!**\n\n'
                 f'**Título:** {titulo}\n'
