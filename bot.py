@@ -68,4 +68,4 @@ async def main():
         print(f'Sucesso! {novasVaga} novas vagas enviadas.')
 
 if __name__ == '__main__':
-    asyncio.ruin(main())
+    asyncio.run(main())
