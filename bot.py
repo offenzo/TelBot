@@ -66,3 +66,6 @@ async def main():
         print('Sem novas vagas de momento.')
     else:
         print(f'Sucesso! {novasVaga} novas vagas enviadas.')
+
+if __name__ == '__main__':
+    asyncio.ruin(main())
