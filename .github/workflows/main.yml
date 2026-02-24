@@ -2,25 +2,16 @@ name: Rodar Bot de Vagas
 
 on:
   schedule:
-    - cron: '0 */6 * * *' 
-  workflow_dispatch: 
-
-# Impede que duas instâncias do bot rodem ao mesmo tempo e causem erro de Git
-concurrency:
-  group: bot-vagas
-  cancel-in-progress: true
+    # Isso faz o bot rodar a cada 6 horas (formato cron)
+    - cron: '0 */1 * * *' 
+  workflow_dispatch: # Permite que você rode manualmente pelo botão
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write # Dá permissão para o bot salvar o arquivo .txt
-
     steps:
       - name: Baixar código do repo
         uses: actions/checkout@v3
-        with:
-          fetch-depth: 0 # Baixa todo o histórico para evitar erros de merge
 
       - name: Configurar Python
         uses: actions/setup-python@v4
@@ -40,10 +31,6 @@ jobs:
         run: |
           git config --global user.name "GitHub Action"
           git config --global user.email "action@github.com"
-
           git add vagas_enviadas.txt
-
-          git pull origin main --rebase 
-          
           git commit -m "Atualizando vagas enviadas" || echo "Sem mudanças"
-          git push origin main
+          git push
