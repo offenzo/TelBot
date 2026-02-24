@@ -5,19 +5,19 @@ from telegram import Bot
 
 TOKEN = os.getenv('TELEGRAM_TOKEN')
 CANAL_ID = os.getenv('CHAT_ID') 
-ficheiroMemoria = 'vagas_enviadas.txt'
+memoria = 'vagas_enviadas.txt'
 
 if not TOKEN:
     raise ValueError('O Token nao foi encontrado')
 
 def lerVagasEnviadas():
-    if not os.path.exists(ficheiroMemoria):
+    if not os.path.exists(memoria):
         return set()
-    with open(ficheiroMemoria, "r") as f:
+    with open(memoria, "r") as f:
         return set(linha.strip() for linha in f.readlines())
 
 def salvarVagaEnviada(link):
-    with open(ficheiroMemoria, "a") as f:
+    with open(memoria, "a") as f:
         f.write(link + "\n")
 
 # API DO GITHUB
