@@ -37,11 +37,13 @@ async def main():
     enviadas = lerVagasEnviadas()
     novasVaga = 0
 
+    #localiza
     for vaga in vagas:
         link = vaga['html_url']
         titulo = vaga['title']
         tags = ", ".join([label['name'] for label in vaga['labels']])
         
+        #filtro
         if link not in enviadas and 'Junior' or 'Estagio' not in titulo:
             mensagem = (
                 f'*Nova Vaga no GitHub!**\n\n'
