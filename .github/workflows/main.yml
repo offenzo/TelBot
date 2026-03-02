@@ -3,7 +3,7 @@ name: Rodar Bot de Vagas
 on:
   schedule:
     # Isso faz o bot rodar a cada 6 horas (formato cron)
-    - cron: '0 */1 * * *' 
+    - cron: '0 */5 * * *' 
   workflow_dispatch: # Permite que você rode manualmente pelo botão
 
 jobs:
