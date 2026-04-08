@@ -1,7 +1,7 @@
 import requests
 import asyncio
 import os
-from telegram import Bot
+from telegram import Bo
 
 TOKEN = os.getenv('TELEGRAM_TOKEN')
 CANAL_ID = os.getenv('CHAT_ID') 
@@ -23,7 +23,10 @@ def salvarVagaEnviada(link):
 # API DO GITHUB
 def buscarVagasGithub():
     url = 'https://api.github.com/repos/backend-br/vagas/issues?state=open'
+    url2 = 'https://api.github.com/repos/frontendbr/vagas/issues?state=open'
+
     resposta = requests.get(url)
+    resposta2 = requests.get(url2)
     
     if resposta.status_code != 200:
         print('Erro ao aceder ao GitHub')
@@ -68,6 +71,16 @@ async def main():
         print('Sem novas vagas de momento.')
     else:
         print(f'Sucesso! {novasVaga} novas vagas enviadas.')
+
+def jaEnviadas (vagaId):
+    with open("vagas_enviadas.txt", "r") as f:
+        enviados = f.read().splitlines()
+    return vagaId in enviados
+
+def registrarEnviadas(vagaId):
+    with open("vagas_enviadas.txt", "a") as f:
+        f.write(f"{vagaId}\n")
+
 
 if __name__ == '__main__':
     asyncio.run(main())
