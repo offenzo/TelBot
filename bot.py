@@ -81,6 +81,5 @@ def registrarEnviadas(vagaId):
     with open("vagas_enviadas.txt", "a") as f:
         f.write(f"{vagaId}\n")
 
-
 if __name__ == '__main__':
     asyncio.run(main())
